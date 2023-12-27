@@ -24,9 +24,11 @@ WORKING-STORAGE SECTION.
 01 Num2 PIC 9 VALUE 4.
 01 Num3 PIC 9 VALUE 3.
 01 Ans PIC S99V99 VALUE 0.
-01 Rem PIC 9V99. *> reminder
+01 Rem PIC 9V99. *> remainder
 
 PROCEDURE DIVISION.
+
+*> Group items
 MOVE "More Stuff" TO SampleData
 MOVE "123" TO SampleData
 MOVE 123 TO SampleData
@@ -36,6 +38,7 @@ MOVE "124asgr                12231990" TO Customer
 DISPLAY CustName
 DISPLAY MOB "/" DOB "/" YOB
 
+*> Figurative Constants
 MOVE ZEROS TO SampleData
 DISPLAY SampleData
 MOVE SPACE TO SampleData
@@ -48,5 +51,43 @@ MOVE QUOTE TO SampleData
 DISPLAY SampleData
 MOVE ALL "3" TO SampleData
 DISPLAY SampleData
+
+*> Math Functions
+ADD Num1 TO Num2 GIVING Ans
+DISPLAY Ans
+SUBTRACT Num1 FROM Num2 GIVING Ans
+DISPLAY Ans
+MULTIPLY Num1 BY Num2 GIVING Ans
+DISPLAY Ans
+DIVIDE Num1 INTO Num2 GIVING Ans
+DISPLAY Ans
+DIVIDE Num1 INTO Num2 GIVING Ans REMAINDER Rem
+DISPLAY Ans
+DISPLAY "REMAINDER " Rem
+
+*> Multiple varaibles
+ADD Num1, Num2 TO Num3 GIVING Ans
+DISPLAY Ans
+ADD Num1, Num2, Num3 GIVING Ans
+DISPLAY Ans
+
+*> Usining COMPUTE
+COMPUTE Ans = Num1 + Num2 + Num3
+DISPLAY Ans
+COMPUTE Ans = Num1 - Num2 - Num3
+DISPLAY Ans
+COMPUTE Ans = Num1 * Num2 * Num3
+DISPLAY Ans
+COMPUTE Ans = Num1 / Num2
+DISPLAY Ans
+COMPUTE Ans = Num1 ** Num2 *> power
+DISPLAY Ans
+COMPUTE Ans = Num1 + Num3 * Num2
+DISPLAY Ans
+COMPUTE Ans = (Num1 + Num3) * Num2
+DISPLAY Ans
+*> Round
+COMPUTE Ans ROUNDED = 3.0 + 2.005
+DISPLAY Ans
 
 STOP RUN.
